@@ -26,6 +26,49 @@ export function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [registerModalOpen, setRegisterModalOpen] = useState(false);
   const [audioActive, setAudioActive] = useState(false);
+  const [cheatActivated, setCheatActivated] = useState(false);
+
+  // Global Konami Code easter egg listener: ↑ ↑ ↓ ↓ ← → ← → B A
+  useEffect(() => {
+    const KONAMI_CODE = [
+      'ArrowUp',
+      'ArrowUp',
+      'ArrowDown',
+      'ArrowDown',
+      'ArrowLeft',
+      'ArrowRight',
+      'ArrowLeft',
+      'ArrowRight',
+      'b',
+      'a',
+    ];
+    let konamiIndex = 0;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement)?.tagName?.toLowerCase();
+      if (tag === 'input' || tag === 'textarea' || (e.target as HTMLElement)?.isContentEditable) {
+        return;
+      }
+
+      const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+      const expectedKey = KONAMI_CODE[konamiIndex].toLowerCase();
+
+      if (key === expectedKey) {
+        konamiIndex++;
+        if (konamiIndex === KONAMI_CODE.length) {
+          konamiIndex = 0;
+          setCheatActivated(true);
+          window.open('https://www.linkedin.com/in/parth-saxena-psa11/', '_blank', 'noopener,noreferrer');
+          setTimeout(() => setCheatActivated(false), 5000);
+        }
+      } else {
+        konamiIndex = key === KONAMI_CODE[0].toLowerCase() ? 1 : 0;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   useEffect(() => {
     // Global scroll progress tracker
@@ -62,6 +105,16 @@ export function App() {
 
       {/* Expressive Custom Desktop Cursor System */}
       <CustomCursor />
+
+      {/* GTA VI Cheat Activated Toast Banner */}
+      {cheatActivated && (
+        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[999999] px-6 py-3 rounded-full bg-black/95 border-2 border-[#FFE600] shadow-[0_0_40px_rgba(255,230,0,0.7)] backdrop-blur-xl flex items-center gap-3 animate-fade-in pointer-events-none">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#FFE600] animate-ping" />
+          <div className="font-mono text-xs uppercase tracking-widest text-white font-bold">
+            <span className="text-[#FFE600] font-black">CHEAT ACTIVATED:</span> ARCHITECT PROFILE UNLOCKED // OPENING PARTH SAXENA LINKEDIN
+          </div>
+        </div>
+      )}
 
       {/* Atmospheric Audio Synth Engine */}
       <AudioAtmosphere active={audioActive} />

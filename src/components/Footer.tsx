@@ -175,15 +175,22 @@ export const Footer: React.FC = () => {
 
             {/* Creator Credit & Copyright */}
             <div className="pt-3 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
-              <div className="flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#FFB450]/15 via-[#F87572]/15 to-[#C9349B]/15 border border-[#FF7A00]/40 shadow-[0_0_20px_rgba(255,122,0,0.2)]">
+              <a
+                href="https://www.linkedin.com/in/parth-saxena-psa11/"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="CONNECT"
+                className="flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#FFB450]/15 via-[#F87572]/15 to-[#C9349B]/15 border border-[#FF7A00]/40 shadow-[0_0_20px_rgba(255,122,0,0.2)] hover:border-[#FFE600] hover:scale-105 transition-all group"
+              >
                 <span className="w-2 h-2 rounded-full bg-[#FFE600] animate-pulse shadow-[0_0_8px_#FFE600]" />
                 <span className="text-white/90 uppercase tracking-widest text-[11px] font-bold">
                   Created by{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFE600] via-[#FF7A00] to-[#E02484] font-black">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFE600] via-[#FF7A00] to-[#E02484] font-black group-hover:brightness-125 transition-all">
                     Parth Saxena
                   </span>
                 </span>
-              </div>
+                <ExternalLink className="w-3 h-3 text-[#FFB450] opacity-75 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              </a>
 
               <div className="text-white/50 text-[11px] text-center sm:text-left">
                 © 2026 Google Developer Groups (GDG) Indore & GDG on Campus IET DAVV.
