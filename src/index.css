@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gta-deep-violet: #3B146B;
+  --color-gta-purple: #7B208F;
+  --color-gta-magenta: #C9349B;
+  --color-gta-coral-pink: #F36A78;
+  --color-gta-coral: #F87572;
+  --color-gta-orange: #FF9B55;
+  --color-gta-warm-yellow: #FFB450;
+  
+  --color-vice-yellow: #FFB450;
+  --color-vice-orange: #FF9B55;
+  --color-vice-coral: #F87572;
+  --color-vice-coral-pink: #F36A78;
+  --color-vice-magenta: #C9349B;
+  --color-vice-purple: #7B208F;
+  --color-vice-deep-violet: #3B146B;
+  --color-vice-night: #05070E;
+  --color-vice-cream: #FFF5EA;
+
+  --font-display: "Bebas Neue", "Anton", sans-serif;
+  --font-supporting: "Space Grotesk", sans-serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+:root {
+  --gta-deep-violet: #3B146B;
+  --gta-purple: #7B208F;
+  --gta-magenta: #C9349B;
+  --gta-coral-pink: #F36A78;
+  --gta-coral: #F87572;
+  --gta-orange: #FF9B55;
+  --gta-warm-yellow: #FFB450;
+
+  --color-vice-yellow: #FFB450;
+  --color-vice-orange: #FF9B55;
+  --color-vice-coral: #F87572;
+  --color-vice-coral-pink: #F36A78;
+  --color-vice-magenta: #C9349B;
+  --color-vice-purple: #7B208F;
+  --color-vice-deep-violet: #3B146B;
+  --color-vice-night: #05070E;
+  --color-vice-cream: #FFF5EA;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #05070E;
+  color: #FFF5EA;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+  position: relative;
+  background-color: #05070E;
+}
+
+/* Hide default cursor on desktop when GTA reticle cursor is active */
+@media (pointer: fine) {
+  body.gta-cursor-active,
+  body.gta-cursor-active a,
+  body.gta-cursor-active button,
+  body.gta-cursor-active [role="button"],
+  body.gta-cursor-active input,
+  body.gta-cursor-active select {
+    cursor: none !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #05070E;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #FFB450, #FF9B55, #F87572, #C9349B, #7B208F);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #FFB450, #F87572, #C9349B, #3B146B);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Cinematic film grain overlay - optimized for 120fps hardware acceleration */
+.film-grain {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.02;
+  transform: translateZ(0);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Cinematic Vignette */
+.cinematic-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(5, 7, 14, 0.75) 100%);
+}
+
+/* GTA VI Official Sunset gradient - matching the bold 7-tone palette */
+.sunset-gradient-text {
+  background: linear-gradient(180deg, #FFE600 0%, #FF7A00 24%, #F87572 48%, #E02484 72%, #7B208F 92%, #3B146B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gta-title-text {
+  background: linear-gradient(180deg, #FFF176 0%, #FFB450 18%, #FF7A00 36%, #F87572 54%, #E02484 76%, #7B208F 95%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gta-title-glow {
+  filter: drop-shadow(0 4px 12px rgba(255, 122, 0, 0.4)) drop-shadow(0 15px 30px rgba(224, 36, 132, 0.65)) drop-shadow(0 25px 60px rgba(123, 32, 143, 0.85));
+}
+
+.gta-skyline-gradient {
+  background: linear-gradient(135deg, #FFB450 0%, #FF7A00 20%, #F87572 45%, #E02484 70%, #7B208F 90%, #3B146B 100%);
+}
+
+.gta-horizontal-gradient {
+  background: linear-gradient(90deg, #FFB450 0%, #FF7A00 20%, #F87572 40%, #E02484 65%, #7B208F 85%, #3B146B 100%);
+}
+
+.gta-pill-btn {
+  background: linear-gradient(90deg, #FF7A00 0%, #F87572 30%, #E02484 70%, #7B208F 100%);
+  box-shadow: 0 0 25px rgba(224, 36, 132, 0.45);
+}
+
+.gta-violet-glow {
+  box-shadow: 0 0 35px rgba(123, 32, 143, 0.5);
+}
+
+.gta-coral-glow {
+  box-shadow: 0 0 30px rgba(248, 117, 114, 0.55);
+}
+
+.sunset-glow-box {
+  box-shadow: 0 0 50px -10px rgba(255, 94, 54, 0.5), 0 0 80px -20px rgba(224, 36, 132, 0.4);
+}
+
+/* Glassmorphism subtle */
+.glass-panel {
+  background: rgba(13, 17, 39, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}

@@ -1,0 +1,16 @@
+{
+  "consoleErrors": [],
+  "failedRequests": [],
+  "overflows": [],
+  "brokenImages": [],
+  "testedViewports": [
+    "desktop-1440 (1440x900)",
+    "desktop-1366 (1366x768)",
+    "tablet-1024 (1024x768)",
+    "tablet-768 (768x1024)",
+    "mobile-430 (430x932)",
+    "mobile-390 (390x844)",
+    "mobile-375 (375x812)"
+  ],
+  "totalImagesTested": 6
+}
